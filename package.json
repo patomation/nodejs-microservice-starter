@@ -1,7 +1,7 @@
 {
-  "name": "npm-package-starter",
+  "name": "nodejs-microservice-starter",
   "version": "0.0.0",
-  "description": "Javascript + Webpack vanilla starter project",
+  "description": "NodeJs MicroService Starter Pack",
   "public": true,
   "main": "build/index.js",
   "types": "build/index.d.ts",
