@@ -14,5 +14,11 @@ npm install
 npm run test
 ```
 
+Tip: Run verbose tests to see console.logs
+
+```
+npm run test -- --verbose
+```
+
 supports naming convention: moduleName.test.ts
 Check out [ava](https://github.com/avajs/ava)
