@@ -6,5 +6,5 @@ RUN npm install typescript
 RUN npm install ts-node-dev
 COPY . .
 
-EXPOSE 8080
+EXPOSE 80
 CMD [ "npx", "ts-node-dev", "./src/index.ts" ]
