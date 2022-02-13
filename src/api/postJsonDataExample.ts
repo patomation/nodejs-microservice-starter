@@ -9,3 +9,4 @@ export const postJsonDataExample = app.post(
     res.send(req.body)
   }
 )
+export default postJsonDataExample
