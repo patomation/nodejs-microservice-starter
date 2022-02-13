@@ -1,10 +1,17 @@
-FROM node:14
-WORKDIR /usr/src/app
+# BASE NODE
+FROM node:16 AS base
+WORKDIR /app
 COPY package*.json ./
-RUN npm install
-RUN npm install typescript
-RUN npm install ts-node-dev
-COPY . .
 
+# DEPENDENCIES
+FROM base AS dependencies
+# Now install everything... that is needed for dev
+RUN npm install && \
+    npm install typescript && \
+    npm install ts-node-dev
+
+# DEVELOP
+FROM dependencies AS develop
+COPY . .
 EXPOSE 80
 CMD [ "npx", "ts-node-dev", "./src/index.ts" ]
