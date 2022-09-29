@@ -1,19 +1,26 @@
+'use strict'
 import test from 'ava'
-import supertest from 'supertest'
-import { app } from './app'
+import { build } from './app'
+
+// const test = async () => {
+//   const app = build()
+//   const response = await app.inject({
+//     method: 'GET',
+//     url: '/'
+//   })
+
+//   console.log('status code: ', response.statusCode)
+//   console.log('body: ', response.body)
+// }
+
+// test()
 
 test('app get', async (t) => {
-  await new Promise<void>((resolve) => {
-    supertest(app)
-      .get('/')
-      .expect('foobar')
-      .expect(200)
-      .end((err, res) => {
-        // If error throw error
-        if (err) throw err
-        // Else pass test
-        resolve()
-      })
+  const app = build()
+  const response = await app.inject({
+    method: 'GET',
+    url: '/',
   })
-  t.pass()
+  t.is(response.statusCode, 200)
+  t.deepEqual(JSON.parse(response.body), { hello: 'world' })
 })

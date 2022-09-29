@@ -1,12 +1,13 @@
-import express from 'express'
-import { postJsonDataExample } from './api/postJsonDataExample'
-const app = express()
-const port = process.env.PORT || 8080
+'use strict'
+import Fastify, { FastifyServerOptions, FastifyInstance } from 'fastify'
 
-app.get('/', (req, res) => {
-  res.status(200).send('foobar')
-})
+function build(options: FastifyServerOptions = {}): FastifyInstance {
+  const app = Fastify(options)
+  app.get('/', async (request, reply) => {
+    reply.type('application/json').code(200)
+    return { hello: 'world' }
+  })
+  return app
+}
 
-app.use(postJsonDataExample)
-
-export { app, port }
+export { build }

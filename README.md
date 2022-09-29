@@ -1,5 +1,7 @@
 # NodeJS MicroService Starter
 
+Micro service starter using fastify
+
 ![flavorite](https://raw.githubusercontent.com/patomation/vanilla-starter/master/public/favicon.ico)
 
 ## Install
