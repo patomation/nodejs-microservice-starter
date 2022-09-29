@@ -1,14 +1,14 @@
 'use strict'
 import { build } from './app'
 
-const port = Number(process.env.PORT) || 3000
+const port = Number(process.env.PORT) || 80
 
 const server = build({
   logger: {
     level: 'info',
-    transport: {
-      target: 'pino-pretty',
-    },
+    // transport: {
+    //   target: 'pino-pretty',
+    // },
   },
 })
 

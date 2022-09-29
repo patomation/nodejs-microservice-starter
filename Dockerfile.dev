@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+# build for the first time
 RUN npx tsc
 
-CMD [ "node", "./build/server.js" ]
+CMD [ "npm", "start" ]
