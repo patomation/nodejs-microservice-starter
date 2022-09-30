@@ -6,13 +6,10 @@ const port = Number(process.env.PORT) || 80
 const server = build({
   logger: {
     level: 'info',
-    // transport: {
-    //   target: 'pino-pretty',
-    // },
   },
 })
 
-server.listen({ port }, (err, address) => {
+server.listen({ port, host: '0.0.0.0' }, (err, address) => {
   if (err) {
     server.log.error(err)
     process.exit(1)
