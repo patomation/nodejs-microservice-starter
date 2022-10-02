@@ -8,3 +8,5 @@ lib
 build
 *\ copy*
 .env
+data/*
+!data/.gitkeep
