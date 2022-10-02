@@ -4,7 +4,7 @@
     "scope-enum": [
       2,
       "always",
-      ["api", "app", "deps", "dev", "doc", "docker", "server", "typescript"]
+      ["api", "app", "deps", "dev", "doc", "docker", "routes", "server", "typescript"]
     ]
   }
 }

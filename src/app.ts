@@ -1,13 +1,17 @@
 'use strict'
 import Fastify, { FastifyServerOptions, FastifyInstance } from 'fastify'
+import { routes } from './routes'
+import fastifyHealthcheck from 'fastify-healthcheck'
 
-function build(options: FastifyServerOptions = {}): FastifyInstance {
-  const app = Fastify(options)
-  app.get('/', async (request, reply) => {
-    reply.type('application/json').code(200)
-    return { hello: 'world' }
+async function build(
+  options: FastifyServerOptions = {}
+): Promise<FastifyInstance> {
+  const fastify = Fastify(options)
+  fastify.register(fastifyHealthcheck, {
+    exposeUptime: true,
   })
-  return app
+  routes.forEach((route) => fastify.route(route))
+  return fastify
 }
 
 export { build }

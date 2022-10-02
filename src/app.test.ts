@@ -2,12 +2,14 @@
 import test from 'ava'
 import { build } from './app'
 
-test('app get', async (t) => {
-  const app = build()
+test('health', async (t) => {
+  const app = await build()
   const response = await app.inject({
     method: 'GET',
-    url: '/',
+    url: '/health',
   })
   t.is(response.statusCode, 200)
-  t.deepEqual(JSON.parse(response.body), { hello: 'world' })
+  t.is(JSON.parse(response.body)?.status, 'ok')
+  t.is(JSON.parse(response.body)?.statusCode, 200)
+  t.not(JSON.parse(response.body)?.uptime, undefined)
 })
